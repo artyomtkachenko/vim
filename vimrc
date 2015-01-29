@@ -12,7 +12,10 @@ set incsearch
 set smartcase
 set ignorecase
 set expandtab
-set cursorline
+set complete=.,i
+set completeopt=longest,menuone
+set omnifunc=syntaxcomplete#Complete
+" set cursorline
 set nobackup
 set noswapfile
 set history=5000
