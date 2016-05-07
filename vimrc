@@ -31,20 +31,30 @@ set background=dark
 "colorscheme vividchalk
 colorscheme jellybeans
 "colorscheme solarized
+let loaded_netrwPlugin = 1
+let g:go_fmt_command = "goimports"
+"let b:goimports_vendor_compatible =1
 
 
 execute pathogen#infect()
 :filetype plugin on
 :command WQ wq
+:command Qa wq
 :command Wq wq
 :command W w
 :command Q q
 :command! -bar -bang Q quit<bang>
+let g:NERDTreeWinPos="left"
+let NERDTreeWinSize=26
+let NERDTreeShowHidden=1
 
-if argc() > 0
-    autocmd vimenter * NERDTree
-    autocmd VimEnter * wincmd p
-endif
+autocmd vimenter * if !argc() | NERDTree | endif
+" closes vim if there is no active windows left
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" if argc() > 0 && argv(0) != "."
+"     autocmd vimenter * NERDTree
+"     autocmd vimenter * wincmd p
+" endif
 
 """" Pathogen settings """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " speedup pathogen loading by temporarily disabling file type detection
@@ -64,5 +74,4 @@ endif
 " turn file type detection back on
 filetype plugin indent on
 
-let g:NERDTreeWinPos="right"
-let NERDTreeWinSize=26
+
